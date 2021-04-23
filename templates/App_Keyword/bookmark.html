@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title_block %} Bookmark {% endblock %}
+
+{% block css_block %}
+<style>
+
+h3 {
+   margin: 2rem 0 1rem 0;
+   font-weight: 650;
+}
+
+.card-body {
+  height: 150px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.card-body>a,
+.card-body>a:hover {
+  color:#636161;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card-body>a>i {
+  float: right;
+  color: #C8C8C8;
+}
+.card-body>a>i:hover {
+  color:#979797;
+}
+
+
+
+</style>
+
+
+{% endblock %}
+
+
+
+{% block body_block %}
+<center>
+    <h3>Bookmark</h3>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            {% for b in bookmark %}
+              <a href="{% url 'App_Keyword:demo' b.page.pk %}">{{b.page.name}}</a>   
+              <a href="{% url 'App_Keyword:u-bookmark' b.page.pk %}"><i class="fas fa-trash ml-5" style="font-size:12px; " ></i></a>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bookmark-card">
+
+    </div>
+
+</center>
+
+
+
+
+{% endblock %}

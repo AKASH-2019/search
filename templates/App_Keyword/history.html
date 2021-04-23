@@ -1,0 +1,227 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+<html lang="en" dir="ltr">
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+      <script>
+          $(document).ready(function(){
+
+              $(".date-picker").datepicker({changeYear: true,changeMonth: true});
+
+
+          });
+      </script>
+
+      <title> History </title>
+      <style>
+         .his-nav{
+             color: #218838;
+             padding : 15px;
+             text-align: center;
+             font-size: 25px;
+             border-radius: 2px;
+         }
+
+         .hidden {
+            display: none;
+         }
+
+         .history-collection{
+            text-align: center;
+            margin-top: 105px;
+         }
+
+         .yesterday, .week, .month, .submit-search, .history{
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            background-color: #218838;
+            font-weight: bold;
+            height: 35px;
+         }
+
+         .serc-link a {
+              color: #939AA0;
+         }
+         a:hover {
+             color: #323232;
+             text-decoration: none;
+             outline: none;
+         }
+
+         .yesterday-sec .close-modal, .week-sec .close-modalW, .month-sec .close-modalM, .his_du .close-modalH{
+             border: none;
+             background-color: #fff;
+             margin-left: 80px;
+             font-weight: bold;
+         }
+
+         @media (max-width: 999px) {
+            .yesterday, .week, .month {
+                height: 4px;
+            }
+         }
+
+    </style>
+
+  <body>
+
+      <div class="his-nav">
+        <p>History</p>
+    </div>
+
+    <div class="history-collection">
+        <div class="container">
+                     <div class="row">
+<!--                         logo-->
+                         <div class="col-md-2">
+                             <div class="yesterday-sec">
+                                 <button class="yesterday">yesterday</button>
+                                 <div class="his_yest hidden">
+                                    <button class="close-modal">&times;</button>
+
+                                    {% for sh in search_history2 %}
+                                     <div class="serc-link">
+                                        <a href="#">{{sh.page.name}}</a>
+                                     </div>
+                                     <hr>
+                                    {% endfor %}
+
+                                 </div>
+                             </div>
+
+                         </div>
+                         <div class="col-md-2">
+                             <div class="week-sec">
+                                 <button class="week">last week</button>
+                                 <div class="his_week hidden">
+                                    <button class="close-modalW">&times;</button>
+
+                                    {% for sh in search_history7 %}
+                                      <div class="serc-link">
+                                        <a href="#">{{sh.page.name}}</a>
+                                     </div>
+                                     <hr>
+                                    {% endfor %}
+
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="month-sec">
+                                 <button class="month">last month</button>
+                                 <div class="his_month hidden">
+                                    <button class="close-modalM">&times;</button>
+
+                                    {% for sh in search_history30 %}
+                                      <div class="serc-link">
+                                        <a href="#">{{sh.page.name}}</a>
+                                     </div>
+                                     <hr>
+                                    {% endfor %}
+
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="col-md-6">
+                             <div class="duration-sec">
+
+                                 <form method="POST">
+                                     {% csrf_token %}
+                                     <input  class="date-picker" placeholder="start" name="start">
+                                     <input  class="date-picker" placeholder="end" name="end">
+                                     <button class="history">Search</button>
+
+
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+        </div>
+    </div>
+
+  <script type="text/javascript">
+// <!--          yesterday -->
+          const his_yest = document.querySelector('.his_yest');
+          const btnClose = document.querySelector('.close-modal');
+          const btnOpen = document.querySelector('.yesterday');
+// <!--          week -->
+          const his_week = document.querySelector('.his_week');
+          const btnCloseW = document.querySelector('.close-modalW');
+          const btnOpenW = document.querySelector('.week');
+// <!--          month -->
+          const his_month = document.querySelector('.his_month');
+          const btnCloseM = document.querySelector('.close-modalM');
+          const btnOpenM = document.querySelector('.month');
+
+
+// <!--          yesterday -->
+          btnOpen.addEventListener('click', function(){
+              his_yest.classList.remove('hidden');
+          });
+
+          btnClose.addEventListener('click', function(event){
+              his_yest.classList.add('hidden');
+          });
+
+// <!--          week -->
+          btnOpenW.addEventListener('click', function(){
+              his_week.classList.remove('hidden');
+          });
+
+          btnCloseW.addEventListener('click', function(){
+              his_week.classList.add('hidden');
+          });
+
+
+
+// <!--          month -->
+          btnOpenM.addEventListener('click', function(){
+              his_month.classList.remove('hidden');
+          });
+
+          btnCloseM.addEventListener('click', function(){
+              his_month.classList.add('hidden');
+          });
+
+
+     </script>
+
+
+
+  </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

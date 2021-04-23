@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+    <title>History | Duration</title>
+    <style>
+.header{
+
+padding: 5px 0px 5px 5px;
+background-color: #DCDCDC;
+}
+.main-name a{
+text-decoration: none;
+color: #218838;
+}
+
+.main-name {
+text-decoration: none;
+text-transform: uppercase;
+margin-top: 20px;
+margin-right: 350px;
+
+font-size: 20px;
+font-weight: 700;
+}
+
+.duration {
+   text-decoration: none;
+   text-transform: uppercase;
+   margin-top: 20px;
+   font-size: 15px;
+   font-weight: 700;
+}
+
+.card-body {
+    height: 500px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.card-body>a {
+    color: black;
+    margin-right: 20px;
+    text-decoration: none;
+}
+.card-body>span {
+    color: #979797;
+}
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="main-name">
+                    <a href="{% url 'App_Keyword:home' %}">Search</a>
+                </div>
+                <div class="duration">
+                    {{start}} - {{end}}
+                    <!-- <a href="{% url 'App_Keyword:home' %}">Search</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <center>
+    
+        <div class="card" style="width: 24rem; margin-top: 40px;">
+            <div class="card-body">
+                {% for b in search_history %}
+                    <a href="{% url 'App_Keyword:demo' b.page.pk %}">{{b.page.name}} </a>
+                    <span>{{b.date}}</span>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="bookmark-card">
+    
+        </div>
+    
+    </center>
+</body>
+</html>
+

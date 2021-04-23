@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block css_block %}
+
+  <style>
+      .sug-card a{
+<!--          background-color: blue;-->
+          padding : 1px;
+          margin-left: 650px;
+          margin-top: 100px;
+          text-decoration: none;
+          color: #191919;
+      }
+
+      .sug-card a:hover {
+          color: #4CAF50;
+      }
+  </style>
+
+{% endblock %}
+
+
+{% block body_block %}
+
+{% if search %}
+  {% for sk in result %}
+    <div class="sug-card center">
+        <a href="{% url 'App_Keyword:demo' pk=sk.pk %}">{{sk}}</a>
+    </div>
+  {% endfor %}
+
+{% endif %}
+
+
+{% endblock %}

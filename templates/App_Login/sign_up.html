@@ -1,0 +1,129 @@
+{% extends 'base0.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title_block-0 %} Search Register {% endblock %}
+
+
+{% block css_block-0 %}
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-image: linear-gradient(rgba(33, 136, 56,.3), rgba(27, 165, 43, .3)), url("/static/img/search.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: top;
+}
+
+.sign-up {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(rgb(245, 234, 234,.7), rgb(245, 234, 234,.7));
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.form-field {
+  margin: 0px 0px 2rem 0;
+}
+<!--.form-field:focus {-->
+<!--  outline: none;-->
+<!--  border-bottom: 3px solid #218838;-->
+<!--}-->
+
+.email-field,
+.password-field {
+  padding: 1.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #969696;
+  border: 3px solid transparent;
+  border-radius: 5px;
+}
+
+.btn-sec {
+  padding: .5rem .8rem;
+  margin: 5px 0px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #28A745;
+}
+.btn-sec:hover {
+   background-color: #28A745;
+   color: #fff;
+}
+.log-in {
+   margin-top: 5px;
+   font-weight: 500;
+}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block body_block-0 %}
+
+
+<!--<div class="sign-page">-->
+<!--<center >-->
+<!--<div class="card" style="width: 25rem;">-->
+<!--  <img class="card-img-top" src="{% static 'img/search.jpg' %}" alt="search image">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Create New Account</h5>-->
+<!--      <form method="POST">-->
+<!--        {{ form|crispy }}-->
+<!--        {% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-success btn-sm">Create Account</button>-->
+<!--      </form>-->
+<!--    <div class="log-in">-->
+<!--       <P>Already have an account? <a href="{% url 'App_Login:login' %}">Login Here</a></P>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</center>-->
+<!--</div>-->
+
+<div class="header">
+
+    <div class="card sign-up" style="width: 25rem; height: 30rem;">
+        <div class="card-body">
+            <center>
+                 <h5 class="card-title title">Create New Account</h5>
+            </center>
+            <form method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-field">
+                    {{field}}
+                </div>
+                {% endfor %}
+                <center>
+                    <button type="submit" class="btn-sec">Create Account</button>
+                </center>
+            </form>
+            <center>
+                <div class="log-in">
+                     <P>Already have an account? <a href="{% url 'App_Login:login' %}">Login Here</a></P>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

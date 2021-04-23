@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+
+{% block css_block %}
+
+  <style>
+      .center-search{
+          position: absolute;
+          top: 35%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+
+      form .input {
+          padding-left: 1rem;
+          width: 300px;
+          height: 40px;
+          border-radius: 40px 0px 0px 40px;
+          margin-right: -5px;
+      }
+
+      .search-btn {
+
+          width: 100px;
+          height: 40px;
+          border-radius: 0px 40px 40px 0px;
+          background: #218838;
+          color: #fff;
+          border: none;
+      }
+      .card {
+          display: inline-block;
+          position: absolute;
+          top: 65%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: none;
+      }
+      .card-child{
+          float: left;
+          margin-right: 10px;
+          padding: 25px;
+          border-radius: 10px;
+          border: 5px solid #F8F8F8;
+      }
+      .card-child:hover{
+          border: 5px solid #C0C0C0;
+      }
+      .card-child:last-child{
+          margin-right: 0px;
+
+      }
+
+      .c1 {
+          background-color: #218838;
+
+      }
+      .c1 a {
+          color: #ffffff;
+          font-weight: 700;
+      }
+      a:hover {
+          text-decoration: none;
+      }
+
+      .recent {
+          margin: 0px 0px 14px 0px;
+          text-transform: uppercase;
+          color: #939aa0;
+          font-weight: 900;
+      }
+      .card-main{
+          border-top: 1px solid #DCDCDC;
+          padding-top: 2rem;
+      }
+      
+      @media (max-width: 828px){
+        form {
+            display: block;
+        }
+        form .input {
+          width:  calc(100% - 220px);
+        }
+        .card {
+            display: block;
+            margin-top: 10px;
+        }
+
+      }
+      @media (max-width: 730px){
+        form {
+            margin-bottom: 10px;
+            display: block;
+        }
+        form .input {
+          padding: 1rem;
+          width:  200px;
+          margin-bottom: 10px;
+        }
+
+      }
+
+      @media (max-width: 598px){
+        form {
+            margin-bottom: 10px;
+            display: block;
+        }
+        form .input {
+          padding: 1rem;
+          width:  120;
+          margin-bottom: 10px;
+        }
+        form .search-btn {
+           width: 60px;
+        }
+        .card-child{
+          padding: 15px;
+        }
+        .c1 a {
+          font-weight: 600;
+      }
+
+      }
+
+
+  </style>
+
+{% endblock %}
+
+
+{% block body_block %}
+
+{% if search %}
+  {% for sk in result %}
+     <a href="{% url 'App_Keyword:demo' pk=sk.pk %}">{{sk}}</a>
+  {% endfor %}
+
+
+
+{% endif %}
+
+<div class="center-search">
+    <form>
+        <input class="input" name="search" placeholder=" Search here">
+        <button class="search-btn">Search</button>
+    </form>
+
+</div>
+
+
+<div class="top-section">
+
+</div>
+
+<center>
+
+    <div class="card">
+        <div class="recent">recent</div>
+        <div class="card-main">
+        {% for a,b in home_all %}
+           <div class="card-child c1"><a href="{% url 'App_Keyword:demo' pk=b%}">{{a}}</a></div>
+        {% endfor %}
+        </div>
+    </div>
+</center>
+
+
+
+{% endblock %}

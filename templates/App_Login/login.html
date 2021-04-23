@@ -1,0 +1,148 @@
+{% extends 'base0.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title_block-0 %} login {% endblock %}
+
+{% block css_block-0 %}
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  background-image: linear-gradient(rgba(33, 136, 56,.3), rgba(27, 165, 43, .3)), url("/static/img/search.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: top;
+}
+
+.sign-in {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(rgb(245, 234, 234,.7), rgb(245, 234, 234,.7));
+}
+
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+
+.form__label {
+   font-size: 1rem;
+   font-weight: 600;
+   color: #969696;
+   margin-left: 1rem;
+   margin-top: .6rem;
+   transition: all .3s;
+}
+
+.email-field:placeholder-shown + .form__label,
+.password-field:placeholder-shown + .form__label{
+   opacity: 0;
+   visibility: hidden;
+   transform: translateY(-2.8rem);
+}
+
+.email-field,
+.password-field {
+  padding: .7rem 8rem .6rem 1rem;
+  color: #969696;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 3px solid transparent;
+  border-radius: 3.5px;
+}
+
+<!--.email-field:focus:invalid,-->
+<!--.password-field:focus:invalid {-->
+<!--  border: 3px solid blue;-->
+
+<!--}-->
+
+
+.btn-sec {
+  padding: .5rem .8rem;
+  margin: 5px 0px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #28A745;
+}
+.btn-sec:hover {
+   background-color: #28A745;
+   color: #fff;
+}
+.sign-up {
+   margin-top: 10px;
+   font-weight: 500;
+}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block body_block-0 %}
+
+
+
+<div class="header">
+
+    <div class="card sign-in" style="width: 25rem; height: 23rem;">
+        <div class="card-body">
+            <center>
+                <h5 class="card-title title">Login</h5>
+            </center>
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-field">
+                    <input type="email" name="username" placeholder="Email" id="email" class="email-field">
+                    <label for="email" class="form__label">Email <address></address></label>
+                </div>
+                <div class="form-field">
+                    <input type="password" name="password" placeholder="Password" id="name" class="password-field">
+                    <label for="name" class="form__label">Password</label>
+                </div>
+
+                <center>
+                    <button type="submit" class="btn-sec">login</button>
+                </center>
+            </form>
+            <center>
+                <div class="sign-up">
+                     <p>Doesn't have an account? <a href="{% url 'App_Login:signup' %}">Create New Account</a></p>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<center class="cart-full">-->
+<!--    <div class="log-in">-->
+<!--        <h2>Login</h2>-->
+<!--        <form method="POST">-->
+<!--            {{ form|crispy }}-->
+<!--            {% csrf_token %}-->
+<!--        <button type="submit" class="btn btn-primary btn-sm">Login</button>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--<br>-->
+<!--    <div class="sign-up">-->
+<!--        <p>Doesn't have an account? <a href="{% url 'App_Login:signup' %}">Create New Account</a></p>-->
+<!--    </div>-->
+<!--</center>-->
+
+
+{% endblock %}

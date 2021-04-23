@@ -1,0 +1,160 @@
+
+
+<style>
+   ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+   }
+
+   .header{
+
+       padding: 5px 0px 5px 5px;
+       background-color: #DCDCDC;
+   }
+   .main-name a{
+       text-decoration: none;
+       color: #218838;
+   }
+
+   .main-name {
+       text-decoration: none;
+       text-transform: uppercase;
+       margin-top: 20px;
+
+       font-size: 20px;
+       font-weight: 700;
+   }
+
+   .search{
+          text-align: center;
+          padding: 15px 0px;
+       }
+
+       form .input-nav {
+          padding-left: 1rem;
+          width:  calc(100% - 220px);
+          height: 40px;
+          border-radius: 40px 0px 0px 40px;
+          margin-right: -5px;
+       }
+
+       .search-btn-nav {
+          width: 100px;
+          height: 40px;
+          border-radius: 0px 40px 40px 0px;
+          background: #218838;
+          color: #fff;
+          border: none;
+       }
+       .logo {
+           display: block;
+           margin-top: 22px;
+       }
+
+
+       .logo li{
+          display: inline-block;
+          margin-right: 12px;
+
+       }
+       .logo li:last-child{
+          margin-right: 0px;
+
+       }
+
+       .logo li a{
+          color:  	#686868;
+
+       }
+
+       .bookmark {
+          position: relative;
+       }
+       .card-show {
+          position: absolute;
+          top: 8rem;
+          left: 5.5rem;
+       }
+
+       .hidden {
+          display: none;
+       }
+
+       @media (max-width: 828px) {
+          .main-name{
+            display: block;
+            text-align: center;
+          }
+          .search{
+            display: block;
+            /* float: left; */
+          }
+          .logo{
+            display: block;
+            /* float: left; */
+          }
+       }
+ 
+
+
+
+
+
+</style>
+
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="main-name">
+                    <a href="{% url 'App_Keyword:home' %}">Search</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="search">
+                   <form>
+                        <input class="input-nav" name="search" placeholder=" Search here">
+                        <button class="search-btn-nav">Search</button>
+                   </form>
+
+                </div>
+            </div>
+            <div class="col-md-3 logo">
+               <center>
+                <ul>
+                    <li>
+                        <a href="{% url 'App_Keyword:history' %}"><i class="fas fa-history"></i></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'App_Keyword:site' %}"><i class="fas fa-window-restore"></i></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'App_Keyword:bookmarked' %}"><i class="fas fa-bookmark"></i></a>
+                    </li>
+                    <li div class="dropdown show">
+
+                        <a class="dropdown-toggle " href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                             <i class="fas fa-cog"></i>
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{% url 'App_Login:profile' %}">Profile</a>
+                            {% if request.user.is_authenticated %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'App_Login:logout' %}">logout</a>
+                            {% else %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'App_Login:login' %}">login</a>
+                            {% endif %}
+                        </div>
+                    </li>
+
+                </ul>
+               </center>
+
+            </div>
+        </div>
+    </div>
+</div>

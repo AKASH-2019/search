@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <!--     font awesome-->
+      <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+      <!-- icon https://ionicons.com/v2/ -->
+       <link rel="stylesheet"  href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+      <style>
+          .header-section {
+              background-color: #E0E0E0;
+              padding: 15px;
+          }
+          .search a {
+              color: #218838;
+              text-transform: uppercase;
+              font-size: 20px;
+              font-weight: 700;
+          }
+          .search a:hover {
+              text-decoration: none;
+          }
+
+          .mid-section, .key-name, .bookmark{
+              display: inline-block;
+              font-size: 20px;
+              font-weight: 700;
+              margin: -3.5px 5px 0px 0px;
+          }
+          .mid-section, .bookmark{
+              margin-right: 0px;
+          }
+
+          .salam-content {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: inline-block;
+              border: 3px solid #A0A0A0;
+              border-radius: 5px;
+              font-size: 40px;
+              color: #28A745;
+          }
+          .salam {
+              margin: 10px;
+          }
+
+          .salam-content:hover {
+              background-color: #28A745;
+              color: #fff;
+          }
+
+          @media (max-width: 1238px){
+            .salam {
+                font-size: 30px;
+            }
+          }
+          @media (max-width: 951px){
+            .salam {
+                font-size: 25px;
+            }
+          }
+          @media (max-width: 795px){
+            .salam {
+                font-size: 20px;
+            }
+          }
+          @media (max-width: 640px){
+            .salam-content{
+                margin: 0px;;
+                
+            }
+            .salam {
+                margin: 0px;
+                font-size: 15px;
+            }
+          }
+
+
+      </style>
+
+      <title>{{page}}</title>
+
+  </head>
+  <body>
+
+      <div class="header-section">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3 search">
+                      <a href="{% url 'App_Keyword:home' %}">Search</a>
+                  </div>
+                  <div class="col-md-6 mid-section">
+                      <center>
+                      <div class="key-name">
+                          {{page}}
+                      </div>
+                      <div class="bookmark">
+                          {% if bookmark_page %}
+                              <a href="{% url 'App_Keyword:u-bookmark' pk=page.pk %}"><i class="ion-android-star" style="color: #4285F4; font-size: 20px;"></i></a>
+                          {% else %}
+                              <a href="{% url 'App_Keyword:bookmark' pk=page.pk %}"><i class="ion-android-star-outline" style="color: #878B8F; font-size: 20px;"></i> </a>
+                          {% endif %}
+                      </div>
+                      </center>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="float-right">
+                          <span class="badge badge-light">views {{page.count}}</span>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+
+
+     <div class="salam-content">
+         <div class="salam">Assalamualaikum Warhamatullah</div>
+     </div>
+
+
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
+
+
+
+
